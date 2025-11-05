@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisitIndia - Discover Incredible Destinations</title>
+
+  <meta name="description" content="Plan your dream trip across India with VisitIndia. Explore breathtaking destinations, culture, heritage, and adventure packages crafted just for you.">
+  <meta name="keywords" content="India tourism, travel India, visit India, Indian destinations, India tour packages, explore India, holidays in India">
+  <link rel="shortcut icon" href="./assets/images/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body id="top">
+  <!-- ================= HEADER ================= -->
+  <header class="header" data-header>
+    <div class="overlay" data-overlay></div>
+
+    <div class="header-top">
+      <div class="container">
+
+        <a href="tel:+919876543210" class="helpline-box">
+          <div class="icon-box">
+            <ion-icon name="call-outline"></ion-icon>
+          </div>
+          <div class="wrapper">
+            <p class="helpline-title">Need Help?</p>
+            <p class="helpline-number">+91 98765 43210</p>
+          </div>
+        </a>
+
+        <a href="index.html" class="logo">
+          <img src="./assets/images/VisitIndia-logo.png" alt="VisitIndia logo">
+        </a>
+
+        <div class="header-btn-group">
+          <button class="search-btn" aria-label="Search"><ion-icon name="search"></ion-icon></button>
+          <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn><ion-icon name="menu-outline"></ion-icon></button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="header-bottom">
+      <div class="container">
+
+        <ul class="social-list">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-youtube"></ion-icon></a></li>
+        </ul>
+
+        <nav class="navbar" data-navbar>
+          <div class="navbar-top">
+            <a href="#" class="logo"><img src="./assets/images/logo-blue.svg" alt="VisitIndia logo"></a>
+            <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn><ion-icon name="close-outline"></ion-icon></button>
+          </div>
+
+          <ul class="navbar-list">
+            <li><a href="#home" class="navbar-link" data-nav-link>Home</a></li>
+            <li><a href="#about" class="navbar-link" data-nav-link>About</a></li>
+            <li><a href="#destination" class="navbar-link" data-nav-link>Destinations</a></li>
+            <li><a href="#package" class="navbar-link" data-nav-link>Packages</a></li>
+            <li><a href="#gallery" class="navbar-link" data-nav-link>Gallery</a></li>
+            <li><a href="#contact" class="navbar-link" data-nav-link>Contact</a></li>
+          </ul>
+        </nav>
+
+        <a href="#package" class="btn btn-primary">Book Now</a>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+    <article>
+
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <div class="container">
+          <h2 class="h1 hero-title">Discover Incredible India</h2>
+          <p class="hero-text">
+            From the snow-clad Himalayas to the tropical beaches of Kerala, embark on a journey that reveals the heart and soul of India.
+          </p>
+          <div class="btn-group">
+            <a href="#destination" class="btn btn-primary">Explore Destinations</a>
+            <a href="#package" class="btn btn-secondary">Plan Your Trip</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOUR SEARCH -->
+      <section class="tour-search">
+        <div class="container">
+          <form action="search.php" method="get" class="tour-search-form">
+            <div class="input-wrapper">
+              <label for="destination" class="input-label">Destination*</label>
+              <input type="text" name="destination" id="destination" required placeholder="Enter Destination" class="input-field">
+            </div>
+            <div class="input-wrapper">
+              <label for="people" class="input-label">Travelers*</label>
+              <input type="number" name="people" id="people" required placeholder="No. of People" class="input-field">
+            </div>
+            <div class="input-wrapper">
+              <label for="checkin" class="input-label">Check-in*</label>
+              <input type="date" name="checkin" id="checkin" required class="input-field">
+            </div>
+            <div class="input-wrapper">
+              <label for="checkout" class="input-label">Check-out*</label>
+              <input type="date" name="checkout" id="checkout" required class="input-field">
+            </div>
+            <button type="submit" class="btn btn-secondary">Search Now</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- POPULAR DESTINATIONS -->
+      <section class="popular" id="destination">
+        <div class="container">
+          <p class="section-subtitle">Explore India</p>
+          <h2 class="h2 section-title">Top Destinations</h2>
+          <p class="section-text">Discover India's most loved travel spots filled with culture, adventure, and scenic beauty.</p>
+
+          <ul class="popular-list">
+
+            <li>
+              <div class="popular-card">
+                <figure class="card-img"><img src="./assets/images/jaipur.jpg" alt="Jaipur, Rajasthan" loading="lazy"></figure>
+                <div class="card-content">
+                  <div class="card-rating"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon></div>
+                  <p class="card-subtitle"><a href="#">Rajasthan</a></p>
+                  <h3 class="h3 card-title"><a href="#">Jaipur – The Pink City</a></h3>
+                  <p class="card-text">Explore royal palaces, historic forts, and vibrant bazaars that capture India's regal heritage.</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+                <figure class="card-img"><img src="./assets/images/manali.jpg" alt="Manali, Himachal Pradesh" loading="lazy"></figure>
+                <div class="card-content">
+                  <div class="card-rating"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></div>
+                  <p class="card-subtitle"><a href="#">Himachal Pradesh</a></p>
+                  <h3 class="h3 card-title"><a href="#">Manali – The Mountain Paradise</a></h3>
+                  <p class="card-text">Enjoy snowy landscapes, adventure sports, and peaceful valleys surrounded by the Himalayas.</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+                <figure class="card-img"><img src="./assets/images/kerala.jpg" alt="Kerala Backwaters" loading="lazy"></figure>
+                <div class="card-content">
+                  <div class="card-rating"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon></div>
+                  <p class="card-subtitle"><a href="#">Kerala</a></p>
+                  <h3 class="h3 card-title"><a href="#">Alleppey – The Venice of the East</a></h3>
+                  <p class="card-text">Cruise through serene backwaters, lush greenery, and houseboat stays for a rejuvenating escape.</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="more-destinations-btn">
+            <a href="map.html" class="btn btn-primary">More Destinations</a>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- PACKAGES -->
+      <section class="package" id="package">
+        <div class="container">
+          <p class="section-subtitle">Popular Packages</p>
+          <h2 class="h2 section-title">Choose Your Experience</h2>
+          <p class="section-text">Handpicked travel experiences designed for every kind of traveler.</p>
+
+          <ul class="package-list">
+            <li>
+              <div class="package-card">
+                <figure class="card-banner"><img src="./assets/images/golden-triangle.jpg" alt="Golden Triangle Tour" loading="lazy"></figure>
+                <div class="card-content">
+                  <h3 class="h3 card-title">Golden Triangle Tour</h3>
+                  <p class="card-text">Explore Delhi, Agra, and Jaipur in one iconic journey filled with history and culture.</p>
+                  <ul class="card-meta-list">
+                    <li class="card-meta-item"><div class="meta-box"><ion-icon name="time"></ion-icon><p class="text">6D/5N</p></div></li>
+                    <li class="card-meta-item"><div class="meta-box"><ion-icon name="people"></ion-icon><p class="text">pax: 15</p></div></li>
+                    <li class="card-meta-item"><div class="meta-box"><ion-icon name="location"></ion-icon><p class="text">Delhi–Agra–Jaipur</p></div></li>
+                  </ul>
+                </div>
+                <div class="card-price">
+                  <div class="wrapper"><p class="reviews">(34 reviews)</p><div class="card-rating"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon></div></div>
+                  <p class="price">₹24,999 <span>/ per person</span></p>
+                  <button class="btn btn-secondary">Book Now</button>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="package-card">
+                <figure class="card-banner"><img src="./assets/images/goa.jpg" alt="Goa Beaches Tour" loading="lazy"></figure>
+                <div class="card-content">
+                  <h3 class="h3 card-title">Goa Beaches Getaway</h3>
+                  <p class="card-text">Experience sun, sand, and nightlife with our 4-day Goa escape package.</p>
+                  <ul class="card-meta-list">
+                    <li class="card-meta-item"><div class="meta-box"><ion-icon name="time"></ion-icon><p class="text">4D/3N</p></div></li>
+                    <li class="card-meta-item"><div class="meta-box"><ion-icon name="people"></ion-icon><p class="text">pax: 10</p></div></li>
+                    <li class="card-meta-item"><div class="meta-box"><ion-icon name="location"></ion-icon><p class="text">Goa</p></div></li>
+                  </ul>
+                </div>
+                <div class="card-price">
+                  <div class="wrapper"><p class="reviews">(50 reviews)</p><div class="card-rating"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon></div></div>
+                  <p class="price">₹14,999 <span>/ per person</span></p>
+                  <button class="btn btn-secondary">Book Now</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="more-destinations-btn">
+            <a href="map.html" class="btn btn-primary">View All Packages</a>
+            </div>
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+      <section class="gallery" id="gallery">
+        <div class="container">
+          <p class="section-subtitle">Travel Moments</p>
+          <h2 class="h2 section-title">Captured by Our Travelers</h2>
+          <p class="section-text">A glimpse into the experiences shared by our happy travelers.</p>
+
+          <ul class="gallery-list">
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/gallery1.jpg" alt="Taj Mahal, Agra"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/gallery2.jpg" alt="Ladakh mountains"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/gallery3.jpg" alt="Kerala backwaters"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/gallery4.jpg" alt="Varanasi ghats"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/gallery5.jpg" alt="Goa beach sunset"></figure></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta" id="contact">
+        <div class="container">
+          <div class="cta-content">
+            <p class="section-subtitle">Call to Action</p>
+            <h2 class="h2 section-title">Plan Your Unforgettable Journey with VisitIndia</h2>
+            <p class="section-text">Reach out to our team and let us create a custom travel experience for you across India’s diverse landscapes.</p>
+          </div>
+          <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+
+        <div class="footer-brand">
+          <a href="#" class="logo"><img src="./assets/images/VisitIndia-logo.png" alt="VisitIndia logo"></a>
+          <p class="footer-text">VisitIndia is your trusted travel companion — helping you explore India’s culture, nature, and adventures with ease.</p>
+        </div>
+
+        <div class="footer-contact">
+          <h4 class="contact-title">Contact Us</h4>
+          <p class="contact-text">We’re here to help you plan your perfect trip!</p>
+          <ul>
+            <li class="contact-item"><ion-icon name="call-outline"></ion-icon><a href="tel:+919876543210" class="contact-link">+91 98765 43210</a></li>
+            <li class="contact-item"><ion-icon name="mail-outline"></ion-icon><a href="mailto:info@visitindia.com" class="contact-link">info@visitindia.com</a></li>
+            <li class="contact-item"><ion-icon name="location-outline"></ion-icon><address>New Delhi, India</address></li>
+          </ul>
+        </div>
+
+        <div class="footer-form">
+          <p class="form-text">Subscribe for travel tips, updates & offers!</p>
+          <form action="subscribe.php" method="post" class="form-wrapper">
+            <input type="email" name="email" class="input-field" placeholder="Enter Your Email" required>
+            <button type="submit" class="btn btn-secondary">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">&copy; 2025 <a href="#">VisitIndia</a>. All rights reserved.</p>
+        <ul class="footer-bottom-list">
+          <li><a href="#" class="footer-bottom-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-bottom-link">Terms & Conditions</a></li>
+          <li><a href="#" class="footer-bottom-link">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="go-top" data-go-top><ion-icon name="chevron-up-outline"></ion-icon></a>
+
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

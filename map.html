@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore on Map - VisitIndia</title>
+  <link rel="shortcut icon" href="./assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <style>
+    /* PAGE SPECIFIC */
+    #map { width: 100%; height: 500px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+
+    .map-container { max-width: 1100px; margin: 120px auto 60px; padding: 0 1rem; }
+
+    .search-bar {
+      display: flex; gap: 10px;
+      background: #fff; border-radius: 10px; padding: 12px;
+      box-shadow: 0 4px 18px rgba(24,90,157,0.1);
+    }
+    .search-bar input {
+      flex: 1; border: 1px solid #ddd; border-radius: 8px;
+      padding: 12px; font-size: 15px; outline: none;
+    }
+    .search-bar button {
+      background: linear-gradient(90deg, #185a9d, #43cea2);
+      border: none; color: #fff; font-weight: 600;
+      border-radius: 8px; padding: 0 18px; cursor: pointer;
+    }
+
+    .section { margin-bottom: 2rem; }
+    .section h2 { font-size: 1.6rem; color: var(--oxford-blue); margin-bottom: .8rem; }
+    .horizontal-scroll {
+      display: flex; overflow-x: auto; gap: 16px;
+      scroll-snap-type: x mandatory; padding-bottom: 8px;
+    }
+    .horizontal-scroll::-webkit-scrollbar { height: 6px; }
+    .horizontal-scroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+    .info-card {
+      background: #fff; border-radius: 12px; padding: 1rem;
+      min-width: 280px; scroll-snap-align: start;
+      box-shadow: 0 6px 20px rgba(24,90,157,0.08);
+    }
+    .info-card h3 { color: #185a9d; margin-bottom: 6px; }
+    .info-card p { color: #555; font-size: 0.9rem; margin-bottom: 4px; }
+
+    .badge {
+      display: inline-block; background: #eef5ff; color: #185a9d;
+      padding: 4px 10px; border-radius: 50px; font-weight: 600;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body id="top">
+
+  <body id="top">
+    <!-- ================= HEADER ================= -->
+    <header class="header" data-header>
+      <div class="overlay" data-overlay></div>
+  
+      <div class="header-top">
+        <div class="container">
+  
+          <a href="tel:+919876543210" class="helpline-box">
+            <div class="icon-box">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+            <div class="wrapper">
+              <p class="helpline-title">Need Help?</p>
+              <p class="helpline-number">+91 98765 43210</p>
+            </div>
+          </a>
+  
+          <a href="index.html" class="logo">
+            <img src="./assets/images/VisitIndia-logo.png" alt="VisitIndia logo">
+          </a>
+  
+          <div class="header-btn-group">
+            <button class="search-btn" aria-label="Search"><ion-icon name="search"></ion-icon></button>
+            <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn><ion-icon name="menu-outline"></ion-icon></button>
+          </div>
+  
+        </div>
+      </div>
+  
+      <div class="header-bottom">
+        <div class="container">
+  
+          <ul class="social-list">
+            <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+            <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+            <li><a href="#" class="social-link"><ion-icon name="logo-youtube"></ion-icon></a></li>
+          </ul>
+  
+          <nav class="navbar" data-navbar>
+            <div class="navbar-top">
+              <a href="#" class="logo"><img src="./assets/images/logo-blue.svg" alt="VisitIndia logo"></a>
+              <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn><ion-icon name="close-outline"></ion-icon></button>
+            </div>
+  
+            <ul class="navbar-list">
+              <li><a href="index.html#home" class="navbar-link" data-nav-link>Home</a></li>
+              <li><a href="index.html#about" class="navbar-link" data-nav-link>About</a></li>
+              <li><a href="index.html#destination" class="navbar-link" data-nav-link>Destinations</a></li>
+              <li><a href="index.html#package" class="navbar-link" data-nav-link>Packages</a></li>
+              <li><a href="index.html#gallery" class="navbar-link" data-nav-link>Gallery</a></li>
+              <li><a href="index.html#contact" class="navbar-link" data-nav-link>Contact</a></li>
+            </ul>
+          </nav>
+  
+  
+        </div>
+      </div>
+    </header>
+  
+    <!-- ================= MAIN ================= -->
+    <main>
+      <article>
+  
+        <!-- HERO -->
+        <section class="hero" style=" min-height: 400px;" id="home">
+          <div class="container ">
+            <h2 class="h1 hero-title" style="font-size:40px;">Discover Incredible India</h2>
+
+          </div>
+        </section>
+  
+
+  <!-- MAP CONTENT -->
+  <main class="map-container">
+    <div class="search-bar">
+      <input id="searchInput" type="text" placeholder="Search a city or place in India (e.g. Jaipur, Varanasi)">
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <div id="map"></div>
+
+    <section id="city-info" class="section" style="display:none;">
+      <h2 id="city-name"></h2>
+      <p id="city-desc"></p>
+    </section>
+
+    <section id="attractions" class="section">
+      <h2>Attractions</h2>
+      <div id="attraction-list" class="horizontal-scroll"></div>
+    </section>
+
+    <section id="hotels" class="section">
+      <h2>Hotels</h2>
+      <div id="hotel-list" class="horizontal-scroll"></div>
+    </section>
+
+    <section id="transport" class="section">
+      <h2>Transport</h2>
+      <div id="transport-list" class="horizontal-scroll"></div>
+    </section>
+  </main>
+
+   <!-- FOOTER -->
+   <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+
+        <div class="footer-brand">
+          <a href="#" class="logo"><img src="./assets/images/VisitIndia-logo.png" alt="VisitIndia logo"></a>
+          <p class="footer-text">VisitIndia is your trusted travel companion — helping you explore India’s culture, nature, and adventures with ease.</p>
+        </div>
+
+        <div class="footer-contact">
+          <h4 class="contact-title">Contact Us</h4>
+          <p class="contact-text">We’re here to help you plan your perfect trip!</p>
+          <ul>
+            <li class="contact-item"><ion-icon name="call-outline"></ion-icon><a href="tel:+919876543210" class="contact-link">+91 98765 43210</a></li>
+            <li class="contact-item"><ion-icon name="mail-outline"></ion-icon><a href="mailto:info@visitindia.com" class="contact-link">info@visitindia.com</a></li>
+            <li class="contact-item"><ion-icon name="location-outline"></ion-icon><address>New Delhi, India</address></li>
+          </ul>
+        </div>
+
+        <div class="footer-form">
+          <p class="form-text">Subscribe for travel tips, updates & offers!</p>
+          <form action="subscribe.php" method="post" class="form-wrapper">
+            <input type="email" name="email" class="input-field" placeholder="Enter Your Email" required>
+            <button type="submit" class="btn btn-secondary">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">&copy; 2025 <a href="#">VisitIndia</a>. All rights reserved.</p>
+        <ul class="footer-bottom-list">
+          <li><a href="#" class="footer-bottom-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-bottom-link">Terms & Conditions</a></li>
+          <li><a href="#" class="footer-bottom-link">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="go-top" data-go-top><ion-icon name="chevron-up-outline"></ion-icon></a>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    let map = L.map('map').setView([20.5937, 78.9629], 5);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
+    const markerGroup = L.layerGroup().addTo(map);
+
+    async function fetchWiki(city) {
+      try {
+        const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(city)}`);
+        const data = await res.json();
+        return data.extract || "No description available.";
+      } catch { return "No description available."; }
+    }
+
+    async function fetchOverpass(query) {
+      const res = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`);
+      return await res.json();
+    }
+
+    document.getElementById('searchBtn').addEventListener('click', handleSearch);
+    document.getElementById('searchInput').addEventListener('keypress', e => { if (e.key === 'Enter') handleSearch(); });
+
+    async function handleSearch() {
+      const q = document.getElementById('searchInput').value.trim();
+      if (!q) return;
+
+      markerGroup.clearLayers();
+      document.getElementById('city-info').style.display = 'none';
+      document.getElementById('attraction-list').innerHTML = '';
+      document.getElementById('hotel-list').innerHTML = '';
+      document.getElementById('transport-list').innerHTML = '';
+
+      const geo = await fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${q}`);
+      const loc = (await geo.json())[0];
+      if (!loc) return alert("City not found.");
+
+      const lat = +loc.lat, lon = +loc.lon;
+      map.setView([lat, lon], 12);
+      L.marker([lat, lon]).addTo(markerGroup).bindPopup(`<b>${q}</b>`).openPopup();
+
+      // City info
+      document.getElementById('city-info').style.display = 'block';
+      document.getElementById('city-name').textContent = q;
+      document.getElementById('city-desc').textContent = await fetchWiki(q);
+
+      // Attractions
+      const attrQuery = `[out:json][timeout:25];
+        node["tourism"="attraction"](around:10000,${lat},${lon});
+        out;`;
+      const attrData = await fetchOverpass(attrQuery);
+      attrData.elements.slice(0,10).forEach(a => {
+        const name = a.tags.name || "Attraction";
+        const addr = a.tags['addr:street'] || a.tags['addr:city'] || "Address not listed";
+        L.marker([a.lat,a.lon]).addTo(markerGroup).bindPopup(name);
+        document.getElementById('attraction-list').innerHTML += `
+          <div class="info-card">
+            <h3>${name}</h3>
+            <p>${addr}</p>
+            <a href="https://www.google.com/maps?q=${a.lat},${a.lon}" class="badge" target="_blank">View</a>
+          </div>`;
+      });
+
+      // Hotels
+      const hotelQuery = `[out:json][timeout:25];
+        node["tourism"="hotel"](around:10000,${lat},${lon});
+        out;`;
+      const hotelData = await fetchOverpass(hotelQuery);
+      hotelData.elements.slice(0,8).forEach(h => {
+        const name = h.tags.name || "Hotel";
+        const addr = h.tags['addr:street'] || h.tags['addr:city'] || "Address not listed";
+        const rate = "₹" + (Math.floor(Math.random()*4000)+2000) + "/night";
+        L.marker([h.lat,h.lon]).addTo(markerGroup).bindPopup(name);
+        document.getElementById('hotel-list').innerHTML += `
+          <div class="info-card">
+            <h3>${name}</h3>
+            <p>${addr}</p>
+            <p><strong>${rate}</strong></p>
+          </div>`;
+      });
+
+      // Transport
+      const transport = [
+        { name: "Nearest Railway Station", desc: "Approx. 10-15 km from city center" },
+        { name: "Nearest Airport", desc: "Approx. 25-40 km from city center" },
+        { name: "Local Cabs", desc: "Available throughout the city" }
+      ];
+      transport.forEach(t => {
+        document.getElementById('transport-list').innerHTML += `
+          <div class="info-card">
+            <h3>${t.name}</h3>
+            <p>${t.desc}</p>
+          </div>`;
+      });
+    }
+  </script>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
