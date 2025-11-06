@@ -368,7 +368,7 @@ body { background: var(--white); }
   background-blend-mode: overlay;
   display: grid;
   place-items: center;
-  min-height: 600px;
+  min-height:700px;
   max-width: 2000px;
   text-align: center;
   padding-top: 125px;
@@ -955,7 +955,7 @@ address {
    */
 
   .hero {
-    min-height: 600px;
+    min-height: 700px;
     padding-top: 85px;
   }
 
